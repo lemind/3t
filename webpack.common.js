@@ -34,7 +34,7 @@ module.exports = {
           fallback: 'style-loader',
           use: [
             {loader: 'css-loader', options: { minimize: isProd }},
-            'postcss-loader',
+            //'postcss-loader',
             'less-loader'
           ]
         })

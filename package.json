@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "clean": "npm cache clean && npm run rimraf -- node_modules dist",
+    "clean": "npm cache verify && npm run rimraf -- node_modules dist",
     "clean:dist": "npm run rimraf -- dist",
     "rimraf": "rimraf"
   },
@@ -53,6 +53,6 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "redux-thunk": "^2.2.0",
-    "rxjs": "^6.0.0"
+    "rxjs": "5.5.10"
   }
 }
