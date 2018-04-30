@@ -16,9 +16,8 @@ export class BoardComponent extends React.Component {
 
     this.state = {
       squares: props.process.squares,
-      playerSign: props.process.playerSign,
-      AISign: props.process.AISign,
-      finished: props.process.finished,
+      playerSign: CONFIG.PLAYER_SIGN,
+      AISign: CONFIG.AI_SIGN,
       winner: props.process.winner,
       moveNumber: 0,
       lastMoveNumber: CONFIG.MOVE_NUMBER
@@ -109,10 +108,14 @@ export class BoardComponent extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
+    let moveNumber = prevState.started && !nextProps.process.started
+      ? 0
+      : prevState.moveNumber
     return {
       squares: nextProps.process.squares,
-      finished: nextProps.process.finished,
-      winner: nextProps.process.winner
+      winner: nextProps.process.winner,
+      started: nextProps.process.started,
+      moveNumber
     }
   }
 
