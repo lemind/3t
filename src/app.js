@@ -12,6 +12,7 @@ import styles from './app.less';
 import { rootReducer, rootEpic } from './redux/root';
 
 import { HeaderComponent as Header } from './components/Header/Header.component';
+import { BoardComponent as Board } from './components/Board/Board.component';
 //import { EmployeesContainer as Employees } from './components/Employees/Employees.container';
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
@@ -32,7 +33,7 @@ const renderApp = () => (
     <Provider store={store}>
       <div className="container">
         <Header />
-        hello!
+        <Board />
       </div>
     </Provider>,
     document.getElementById('app')
