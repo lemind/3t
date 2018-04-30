@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 import { combineEpics } from 'redux-observable';
 
-import { movesReducer, movesEpics } from './moves/index';
+import { processReducer, processEpics } from './process/index';
 
 export const rootReducer = combineReducers({
-  moves: movesReducer
+  process: processReducer
 });
 
 export const rootEpic = combineEpics(
-  ...movesEpics
+  ...processEpics
 );

@@ -51,9 +51,7 @@ var fc = 0;
 // //loging the results
 // console.log("index: " + bestSpot.index);
 // console.log("function calls: " + fc);
-export default {
-  minimax
-}
+
 // the main minimax function
 function minimax(newBoard, player){
   //add one to function calls
@@ -134,7 +132,7 @@ function emptyIndexies(board){
 }
 
 // winning combinations using the board indexies for instace the first win could be 3 xes in a row
-function winning(board, player){
+const winning = function winning(board, player){
  if (
         (board[0] == player && board[1] == player && board[2] == player) ||
         (board[3] == player && board[4] == player && board[5] == player) ||
@@ -149,4 +147,9 @@ function winning(board, player){
     } else {
         return false;
     }
+}
+
+export default {
+  getBestMove: minimax,
+  isWin: winning
 }

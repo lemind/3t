@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-//import thunk from 'redux-thunk';
+
 import { createEpicMiddleware } from 'redux-observable';
 import { combineReducers } from 'redux';
 
@@ -11,9 +11,8 @@ import styles from './app.less';
 
 import { rootReducer, rootEpic } from './redux/root';
 
-import { HeaderComponent as Header } from './components/Header/Header.component';
-import { BoardComponent as Board } from './components/Board/Board.component';
-//import { EmployeesContainer as Employees } from './components/Employees/Employees.container';
+import { HeaderContainer as Header } from './components/Header/Header.container';
+import { BoardContainer as Board } from './components/Board/Board.container';
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
 

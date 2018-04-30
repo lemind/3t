@@ -14,23 +14,61 @@ export class BoardComponent extends React.Component {
     }
 
     this.state = {
-      squares
+      squares: props.process.squares,
+      playerSign: props.process.playerSign,
+      AISign: props.process.AISign,
+      finished: props.process.finished,
+      winner: props.process.winner
     };
+
+    this.actions = {};
+    this.actions.resetGame = props.resetGame;
+    this.actions.updateBoard = props.updateBoard;
+    this.actions.setWinner = props.setWinner;
+  }
+
+  isEmptySquare (key) {
+    return Number.isInteger(this.state.squares[key])
   }
 
   handleClick(i) {
+    if (this.state.finished || !this.isEmptySquare(i)) return
     const squares = this.state.squares.slice();
-    squares[i] = 'X';
-    this.setState({ squares }, this.AImove);
+    squares[i] = this.state.playerSign;
+    this.setState({ squares },
+      this.checkWinner.bind(this, this.state.playerSign)
+    );
   }
 
-  AImove() {
-    const squares = this.state.squares.slice();
-    const AIsign = 'O'
-    const bestIndex = AI.minimax(squares, AIsign).index
+  checkWinner(player) {
+    if (this.isWinner(player)) {
+      this.finishGame(player)
+    } else {
+      if (player === this.state.playerSign) {
+        this.AIMove()
+      }
+    }
+  }
 
+  AIMove() {
+    const squares = this.state.squares.slice();
+    const AIsign = this.state.AISign
+    const bestIndex = AI.getBestMove(squares, AIsign).index
     squares[bestIndex] = AIsign;
-    this.setState({ squares });
+    this.setState({ squares },
+      this.checkWinner.bind(this, this.state.AISign)
+    );
+  }
+
+  isWinner(player) {
+    return AI.isWin(this.state.squares, player)
+  }
+
+  finishGame(winner) {
+    this.setState({
+      finished: true,
+      winner
+    });
   }
 
   renderSquare(i) {
@@ -40,6 +78,14 @@ export class BoardComponent extends React.Component {
         onClick={() => this.handleClick(i)}
       />
     );
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+      squares: nextProps.process.squares,
+      finished: nextProps.process.finished,
+      winner: nextProps.process.winner
+    }
   }
 
   render() {
