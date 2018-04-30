@@ -13,6 +13,7 @@ import { rootReducer, rootEpic } from './redux/root';
 
 import { HeaderContainer as Header } from './components/Header/Header.container';
 import { BoardContainer as Board } from './components/Board/Board.container';
+import { ResultsContainer as Results } from './components/Results/Results.container';
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
 
@@ -32,7 +33,12 @@ const renderApp = () => (
     <Provider store={store}>
       <div className="container">
         <Header />
-        <Board />
+        <div className="board-block">
+          <Board />
+        </div>
+        <div className="results-block">
+          <Results />
+        </div>
       </div>
     </Provider>,
     document.getElementById('app')

@@ -16,6 +16,9 @@ export const BoardContainer = connect(
       },
       setWinner: (winner) => {
         dispatch(processActions.setWinner(winner))
+      },
+      startGame: () => {
+        dispatch(processActions.startGame())
       }
     };
   }

@@ -4,7 +4,6 @@ import './Header.less';
 export class HeaderComponent extends React.Component {
   constructor(props) {
     super();
-    console.log('object', props);
   }
 
   render() {

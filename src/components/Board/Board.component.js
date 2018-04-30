@@ -2,7 +2,8 @@ import React from 'react';
 import './Board.less';
 
 import { SquareComponent as Square } from './../Square/Square.component';
-import AI from './../../helpers/AI'
+import AI from './../../helpers/AI';
+import { CONFIG } from './../../config';
 
 export class BoardComponent extends React.Component {
   constructor(props) {
@@ -18,11 +19,13 @@ export class BoardComponent extends React.Component {
       playerSign: props.process.playerSign,
       AISign: props.process.AISign,
       finished: props.process.finished,
-      winner: props.process.winner
+      winner: props.process.winner,
+      moveNumber: 0,
+      lastMoveNumber: CONFIG.MOVE_NUMBER
     };
 
     this.actions = {};
-    this.actions.resetGame = props.resetGame;
+    this.actions.startGame = props.startGame;
     this.actions.updateBoard = props.updateBoard;
     this.actions.setWinner = props.setWinner;
   }
@@ -32,10 +35,22 @@ export class BoardComponent extends React.Component {
   }
 
   handleClick(i) {
-    if (this.state.finished || !this.isEmptySquare(i)) return
+    if (this.state.winner || !this.isEmptySquare(i)) return
+
+    if (this.state.moveNumber === 0) {
+      this.actions.startGame()
+    }
+
     const squares = this.state.squares.slice();
     squares[i] = this.state.playerSign;
-    this.setState({ squares },
+
+    this.actions.updateBoard(squares);
+
+    this.setState(
+      {
+        squares,
+        moveNumber: this.state.moveNumber + 1
+      },
       this.checkWinner.bind(this, this.state.playerSign)
     );
   }
@@ -44,8 +59,12 @@ export class BoardComponent extends React.Component {
     if (this.isWinner(player)) {
       this.finishGame(player)
     } else {
-      if (player === this.state.playerSign) {
-        this.AIMove()
+      if (this.state.moveNumber === this.state.lastMoveNumber) {
+        this.finishGame('draw')
+      } else {
+        if (player === this.state.playerSign) {
+          this.AIMove()
+        }
       }
     }
   }
@@ -55,7 +74,14 @@ export class BoardComponent extends React.Component {
     const AIsign = this.state.AISign
     const bestIndex = AI.getBestMove(squares, AIsign).index
     squares[bestIndex] = AIsign;
-    this.setState({ squares },
+
+    this.actions.updateBoard(squares);
+
+    this.setState(
+      {
+        squares,
+        moveNumber: this.state.moveNumber + 1
+      },
       this.checkWinner.bind(this, this.state.AISign)
     );
   }
@@ -65,9 +91,11 @@ export class BoardComponent extends React.Component {
   }
 
   finishGame(winner) {
+    this.actions.setWinner(winner);
+
     this.setState({
-      finished: true,
-      winner
+      winner,
+      moveNumber: 0
     });
   }
 

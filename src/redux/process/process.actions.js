@@ -10,4 +10,7 @@ export const actions = {
   resetGame: () => ({
     type: 'RESET_GAME'
   }),
+  startGame: () => ({
+    type: 'START_GAME'
+  })
 }
