@@ -12,7 +12,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:watch:coverage": "jest --watch --coverage"
+    "test:watch:coverage": "jest --watch --coverage",
+    "heroku-postbuild": "npm run build"
   },
   "author": "lemind@mail.ru",
   "license": "ISC",
