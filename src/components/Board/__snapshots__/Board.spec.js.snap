@@ -8,25 +8,15 @@ exports[`Board should render Board 1`] = `
     className="board__row"
   >
     <SquareComponent
+      data-id={0}
       onClick={[Function]}
     />
     <SquareComponent
+      data-id={1}
       onClick={[Function]}
     />
     <SquareComponent
-      onClick={[Function]}
-    />
-  </div>
-  <div
-    className="board__row"
-  >
-    <SquareComponent
-      onClick={[Function]}
-    />
-    <SquareComponent
-      onClick={[Function]}
-    />
-    <SquareComponent
+      data-id={2}
       onClick={[Function]}
     />
   </div>
@@ -34,12 +24,31 @@ exports[`Board should render Board 1`] = `
     className="board__row"
   >
     <SquareComponent
+      data-id={3}
       onClick={[Function]}
     />
     <SquareComponent
+      data-id={4}
       onClick={[Function]}
     />
     <SquareComponent
+      data-id={5}
+      onClick={[Function]}
+    />
+  </div>
+  <div
+    className="board__row"
+  >
+    <SquareComponent
+      data-id={6}
+      onClick={[Function]}
+    />
+    <SquareComponent
+      data-id={7}
+      onClick={[Function]}
+    />
+    <SquareComponent
+      data-id={8}
       onClick={[Function]}
     />
   </div>

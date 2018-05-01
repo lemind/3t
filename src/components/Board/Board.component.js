@@ -73,7 +73,6 @@ export class BoardComponent extends React.Component {
     const AIsign = this.state.AISign
     const bestIndex = AI.getBestMove(squares, AIsign).index
     squares[bestIndex] = AIsign;
-
     this.actions.updateBoard(squares);
 
     this.setState(
@@ -101,8 +100,9 @@ export class BoardComponent extends React.Component {
   renderSquare(i) {
     return (
       <Square
-        value={this.state.squares[i]}
-        onClick={() => this.handleClick(i)}
+        data-id={ i }
+        value={ this.state.squares[i] }
+        onClick={ () => this.handleClick(i) }
       />
     );
   }

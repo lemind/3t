@@ -1,5 +1,6 @@
 import React from 'react';
 import './Results.less';
+import { CONFIG } from './../../config';
 
 export class ResultsComponent extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ export class ResultsComponent extends React.Component {
         if (state.winner === 'draw') {
           return 'Draw'
         } else {
-          return state.winner === state.playerSign
+          return state.winner === CONFIG.PLAYER_SIGN
             ? 'You win!'
             : 'You lose'
         }
@@ -44,7 +45,7 @@ export class ResultsComponent extends React.Component {
     return (
       <div className="results">
         <span className="results__label">Result:</span>
-        <span>{ this.getCurrentStatus() }</span>
+        <span className="results__status">{ this.getCurrentStatus() }</span>
       </div>
     )
   };

@@ -9,7 +9,9 @@ exports[`Results should render Results 1`] = `
   >
     Result:
   </span>
-  <span>
+  <span
+    className="results__status"
+  >
     Ready to start
   </span>
 </div>
