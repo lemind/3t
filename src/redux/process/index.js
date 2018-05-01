@@ -1,5 +1,5 @@
 import { actions } from './process.actions';
-import { reducer } from './process.reducer';
+import { reducer, initialState } from './process.reducer';
 import { processEpics } from './process.epics';
 
 export {

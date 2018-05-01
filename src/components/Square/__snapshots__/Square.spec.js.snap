@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Square should render SquareComponent 1`] = `
+<div
+  className="square"
+>
+  <button
+    className="square__button"
+    onClick={[Function]}
+  />
+</div>
+`;

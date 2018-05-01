@@ -8,5 +8,5 @@ export const rootReducer = combineReducers({
 });
 
 export const rootEpic = combineEpics(
-  ...processEpics
+  processEpics.updateBoardEpic
 );

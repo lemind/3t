@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Results should render Results 1`] = `
+<div
+  className="results"
+>
+  <span
+    className="results__label"
+  >
+    Result:
+  </span>
+  <span>
+    Ready to start
+  </span>
+</div>
+`;

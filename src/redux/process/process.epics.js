@@ -1,8 +1,13 @@
+import { from } from 'rxjs/observable/from';
 
 export const processEpics = {};
 
-processEpics.updateBoardEpic = action$ =>
+processEpics.updateBoardEpic = action$ => 
+{
   action$.ofType('UPDATE_BOARD')
-    .map(action => {
-      console.log('do update board epic');
+    .subscribe(res => {
+      console.log(res)
     });
+
+  return from([])
+}

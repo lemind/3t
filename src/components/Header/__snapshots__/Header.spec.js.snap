@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render HeaderComponent 1`] = `
+<header>
+  <div
+    className="menu"
+  >
+    <a
+      href="javascript:;"
+      onClick={[Function]}
+    >
+      New game
+    </a>
+  </div>
+</header>
+`;
