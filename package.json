@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "express": "^4.16.3",
     "jquery": "^3.3.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -65,7 +66,9 @@
     "rxjs": "5.5.10"
   },
   "jest": {
-    "setupFiles": ["<rootDir>/src/utils/jestSetup"],
+    "setupFiles": [
+      "<rootDir>/src/utils/jestSetup"
+    ],
     "moduleFileExtensions": [
       "js"
     ],
